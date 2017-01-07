@@ -111,8 +111,8 @@
             android:layout_height="40dp"
             android:layout_margin="20dp"
             android:background="#ffffff"
-            android:onClick="LogIn"
-            android:text="Log In"
+            android:onClick="attempSignUp"
+            android:text="Sign Up"
             android:textAllCaps="true" />
 
     </LinearLayout>
