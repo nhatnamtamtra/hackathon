@@ -1,8 +1,11 @@
 package com.f4.letparty.server.model;
 
+import org.springframework.boot.orm.jpa.EntityScan;
+
 /**
  * Created by Dang on 1/7/2017.
  */
+@EntityScan
 public class Invitation {
     private int invitation_id;
     private int host_id;
@@ -39,5 +42,15 @@ public class Invitation {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "Invitation{" +
+                "invitation_id=" + invitation_id +
+                ", host_id=" + host_id +
+                ", location_id=" + location_id +
+                ", time='" + time + '\'' +
+                '}';
     }
 }
