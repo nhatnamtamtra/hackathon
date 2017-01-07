@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by OKATA on 1/7/2017.
  */
@@ -34,9 +36,9 @@ public class FriendListAdapter extends ArrayAdapter<Friend> {
         }
         Friend friend = getItem(position);
         if (friend != null){
-            TextView imgDirect = (TextView) v.findViewById(R.id.imgProfilePicture);
+            CircleImageView imgDirect = (CircleImageView) v.findViewById(R.id.imgProfilePicture);
             TextView username = (TextView) v.findViewById(R.id.username);
-            imgDirect.setText(friend.getImgDirect());
+            imgDirect.setImageResource(R.drawable.ic_launcher);
             username.setText(friend.getName());
             // TODO: set image for location
         }

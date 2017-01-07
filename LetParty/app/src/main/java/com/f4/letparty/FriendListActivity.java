@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class FriendListActivity extends AppCompatActivity {
     ListView listFriend;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
