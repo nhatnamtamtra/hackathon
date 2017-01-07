@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package showcase;
+package com.f4.letparty.server;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -38,9 +38,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.roles("USER");
 		// @formatter:on
 	}
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable();
 		// @formatter:off
 		http
 			.authorizeRequests()
@@ -50,5 +50,36 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.httpBasic();
 		// @formatter:on
 	}
+/*
+	@Bean
+	public javax.sql.DataSource dataSource() {
+		DriverManagerDataSource
+				dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/[F4].InvitationForLunch");
+		dataSource.setUsername("root");
+		dataSource.setPassword("root");
 
+		return dataSource;
+	}
+
+	@Bean
+	public EntityManagerFactory entityManagerFactory() {
+		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		vendorAdapter.setGenerateDdl(true);
+		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+		factory.setJpaVendorAdapter(vendorAdapter);
+		factory.setPackagesToScan("com.f4.letparty.server.model");
+		factory.setDataSource(dataSource());
+		factory.afterPropertiesSet();
+		return factory.getObject();
+	}
+
+	@Bean
+	public PlatformTransactionManager transactionManager() {
+		JpaTransactionManager txManager = new JpaTransactionManager();
+		txManager.setEntityManagerFactory(entityManagerFactory());
+		return txManager;
+	}
+*/
 }
