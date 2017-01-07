@@ -16,12 +16,16 @@
 
 package showcase;
 
+import com.f4.letparty.server.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Handles requests for the application home page.
@@ -43,10 +47,48 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/getmessage", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody Message getMessage() {
-		logger.info("Accessing protected resource");
-		return new Message(100, "Congratulations!", "You have accessed a Basic Auth protected resource.");
+	@RequestMapping(value = "/get_list_friend", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody
+	List<User> getListFriend() {
+		logger.info("Getting list of friends");
+		List<User> ls = new ArrayList<User>();
+		ls.add(new User());
+		ls.add(new User());
+
+		return ls;
 	}
+
+	@RequestMapping(value = "/get_location", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody
+	List<Location> getListLocation() {
+		logger.info("Getting list of locations");
+		List<Location> ls = new ArrayList<Location>();
+		ls.add(new Location());
+		ls.add(new Location());
+
+		return ls;
+	}
+
+	@RequestMapping(value = "/get_invitation", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody
+	List<Invitation> getListInvitation() {
+		logger.info("Getting list of invitation");
+		List<Invitation> ls = new ArrayList<Invitation>();
+		ls.add(new Invitation());
+		ls.add(new Invitation());
+
+		return ls;
+	}
+
+
+
+	@RequestMapping(value = "/invite", method = RequestMethod.POST)
+	public @ResponseBody
+	String invite(@RequestBody Invitation invitation) {
+		System.out.println(invitation);
+
+		return null;
+	}
+
 
 }

@@ -1,12 +1,15 @@
 package com.f4.letparty;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 /**
@@ -19,7 +22,7 @@ import android.view.ViewGroup;
  */
 public class LocationContent extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
-
+    Button invite_btn;
     public LocationContent() {
         // Required empty public constructor
     }
@@ -41,7 +44,21 @@ public class LocationContent extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_location_content, container, false);
+        View v = inflater.inflate(R.layout.fragment_location_content, container, false);
+        invite_btn = (Button) v.findViewById(R.id.location_content_invite_btn);
+        invite_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent friendListIntent = new Intent(getContext(), FriendListActivity.class);
+                    startActivity(friendListIntent);
+                }
+                catch (Exception e){
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        return v;
     }
 
 }

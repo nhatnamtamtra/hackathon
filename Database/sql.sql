@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `[f4]_invitationforlunch` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `[f4]_invitationforlunch`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: [f4]_invitationforlunch
@@ -52,6 +54,7 @@ DROP TABLE IF EXISTS `guest_list`;
 CREATE TABLE `guest_list` (
   `Invitation_ID` int(11) NOT NULL,
   `Guest_ID` int(11) NOT NULL,
+  `is_accepted` varchar(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Invitation_ID`,`Guest_ID`),
   KEY `fk_guest_list_guest_id_idx` (`Guest_ID`),
   CONSTRAINT `fk_guest_list_guest_id` FOREIGN KEY (`Guest_ID`) REFERENCES `user` (`User_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -65,7 +68,7 @@ CREATE TABLE `guest_list` (
 
 LOCK TABLES `guest_list` WRITE;
 /*!40000 ALTER TABLE `guest_list` DISABLE KEYS */;
-INSERT INTO `guest_list` VALUES (1,2),(1,4);
+INSERT INTO `guest_list` VALUES (1,2,'1'),(1,4,'0');
 /*!40000 ALTER TABLE `guest_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,9 +111,10 @@ DROP TABLE IF EXISTS `location`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `location` (
   `Location_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(200) NOT NULL,
+  `Name` varchar(100) NOT NULL,
   `X` float NOT NULL,
   `Y` float NOT NULL,
+  `Address` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Location_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -121,7 +125,7 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (1,'Mỳ cay Bò xóm đất',102.2,100),(2,'Gà tắm nước mắm',205.5,150.3),(3,'Trà sửa chửi',100.5,50);
+INSERT INTO `location` VALUES (1,'Mỳ cay Bò xóm đất',102.2,100,NULL),(2,'Gà tắm nước mắm',205.5,150.3,NULL),(3,'Trà sửa chửi',100.5,50,NULL);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,6 +140,7 @@ CREATE TABLE `user` (
   `User_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Nickname` varchar(30) NOT NULL,
   `Password` varchar(8) DEFAULT NULL,
+  `Avatar_URL` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`User_ID`),
   UNIQUE KEY `Nickname_UNIQUE` (`Nickname`),
   UNIQUE KEY `Password_UNIQUE` (`Password`)
@@ -148,7 +153,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'chkim299','00000000'),(2,'namhboy','12345678'),(3,'phucbo','87654321'),(4,'baoviet','11111111');
+INSERT INTO `user` VALUES (1,'chkim299','00000000',NULL),(2,'namhboy','12345678',NULL),(3,'phucbo','87654321',NULL),(4,'baoviet','11111111',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -161,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-07 10:23:52
+-- Dump completed on 2017-01-07 13:26:16
