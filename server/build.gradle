@@ -12,9 +12,9 @@ apply plugin: "java"
 apply plugin: "eclipse"
 apply plugin: "idea"
 apply plugin: "spring-boot"
-
+-
 jar {
-	baseName = "spring-android-basic-auth-server"
+	baseName = "let-party-server"
 	version =  "0.1.0"
 }
 
