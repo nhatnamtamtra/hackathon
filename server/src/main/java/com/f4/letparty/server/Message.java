@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package showcase;
+package com.f4.letparty.server;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
