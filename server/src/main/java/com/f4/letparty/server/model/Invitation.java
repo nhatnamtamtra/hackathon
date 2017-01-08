@@ -1,16 +1,37 @@
 package com.f4.letparty.server.model;
+import com.sun.istack.internal.Nullable;
 
-import org.springframework.boot.orm.jpa.EntityScan;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by Dang on 1/7/2017.
  */
-@EntityScan
+@Entity
+
 public class Invitation {
-    private int invitation_id;
-    private int host_id;
-    private int location_id;
+    @Id
+    @Column(name="Invitation_ID")
+    private Integer invitation_id;
+    @Column(name="Host_ID")
+    private Integer host_id;
+    @Column(name="Location_ID")
+    @Nullable
+    private Integer location_id;
+    @Nullable
+    @Column(name="Time")
     private String time;   //Format: "YYYY-MM-DD HH-MM-SS"
+
+    public Invitation(Integer invitation_id, Integer host_id, Integer location_id, String time) {
+        this.invitation_id = invitation_id;
+        this.host_id = host_id;
+        this.location_id = location_id;
+        this.time = time;
+    }
+
+    public Invitation() {
+    }
 
     public int getInvitation_id() {
         return invitation_id;

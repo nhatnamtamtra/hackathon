@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class User {
     @Id
     @Column(name="User_ID")
-    private int user_id;
+    private Integer user_id;
 
     @Column(name = "Nickname",nullable = true)
     private String nickname;
@@ -19,7 +19,16 @@ public class User {
     @Column(name="Password")
     private String password;
 
-    public int getUser_id() {
+    @Column(name="Avatar_URL")
+    private String avatar;
+    public User(Integer user_id, String nickname, String password, String avatar) {
+        this.user_id = user_id;
+        this.nickname = nickname;
+        this.password = password;
+        this.avatar = avatar;
+    }
+
+    public Integer getUser_id() {
         return user_id;
     }
 
@@ -31,7 +40,7 @@ public class User {
         return password;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(Integer user_id) {
         this.user_id = user_id;
     }
 
@@ -41,5 +50,8 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public User() {
     }
 }
