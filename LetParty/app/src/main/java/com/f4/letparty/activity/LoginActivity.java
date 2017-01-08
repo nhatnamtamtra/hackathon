@@ -46,13 +46,15 @@ public class LoginActivity extends AppCompatActivity{
 
     public void attempLogin(View v){
         // TODO: Login function
+        //finish();
+        /*
         Toast.makeText(this, user_tv.getText(), Toast.LENGTH_SHORT).show();
         if (user_tv.getText().equals("smile") && pass_tv.getText().equals("smile")){
             finish();
         }
         else{
             Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
 

@@ -21,8 +21,10 @@ public class FriendListActivity extends AppCompatActivity {
         listFriend =(ListView) findViewById(R.id.listView);
         ArrayList<Friend> arrayFriend = new ArrayList<Friend>();
         // TODO: get list Location
-        arrayFriend.add(new Friend("test 1", "test 12", "3728493274"));
-        arrayFriend.add(new Friend("test 2", "test 22", "3728493274"));
+        arrayFriend.add(new Friend("Nhatnam Doan", "nhatnam", "3728493274"));
+        arrayFriend.add(new Friend("Bui Ba Phuc", "buibaphuc", "3728493274"));
+        arrayFriend.add(new Friend("Minh Chuong", "minhchuong", "3728493274"));
+        arrayFriend.add(new Friend("Viet Bao", "vietbao", "3728493274"));
 
         FriendListAdapter adapter = new FriendListAdapter(
                 this,

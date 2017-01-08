@@ -7,21 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/imgProfilePicture"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_below="@+id/view"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/ic_launcher"
-            android:onClick="onClickProfilePicture"
-            app:border_color="@color/white"
-            app:border_width="3dp" />
+            android:background="@drawable/ic_launcher"/>
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="550dp"
             android:layout_height="wrap_content"
             android:id="@+id/username"
             android:layout_weight="1"

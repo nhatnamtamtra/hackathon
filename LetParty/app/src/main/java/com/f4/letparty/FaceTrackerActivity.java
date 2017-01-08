@@ -113,6 +113,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
                 Log.i("Happiness", "H = " + max);
                 Log.i("Happiness", "Ave = " + ave);
+                //TODO : return
             }
         }.start();
     }
