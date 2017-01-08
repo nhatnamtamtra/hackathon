@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,8 @@ import com.f4.letparty.ui.*;
 import com.f4.letparty.FaceGraphic;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Activity for the face tracker app.  This app detects faces with the rear facing camera, and draws
@@ -46,6 +49,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
     // permission request codes need to be < 256
     private static final int RC_HANDLE_CAMERA_PERM = 2;
 
+    private List<Double> mListMaxHappiness = new ArrayList<>();
     //==============================================================================================
     // Activity Methods
     //==============================================================================================
@@ -69,6 +73,48 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         } else {
             requestCameraPermission();
         }
+
+        // Begin timer
+        new CountDownTimer(10000, 1000){
+            @Override
+            public void onTick(long l) {
+                Log.i("Msg","Tick");
+                double max  = 0.0;
+                if (mListFaceGraphic.size() > 0){
+                    for (FaceGraphic fg : mListFaceGraphic){
+                        if (max < fg.getFaceHappiness()){
+                            max = fg.getFaceHappiness();
+                        }
+                    }
+                }
+                FaceTrackerActivity.this.mListMaxHappiness.add(max);
+            }
+
+            @Override
+            public void onFinish() {
+                double max = 0.0;
+                if (mListFaceGraphic.size() > 0){
+                   for (FaceGraphic fg : mListFaceGraphic){
+                       if (max < fg.getFaceHappiness()){
+                           max = fg.getFaceHappiness();
+                       }
+                   }
+                }
+                FaceTrackerActivity.this.mListMaxHappiness.add(max);
+                int i = 3 * mListMaxHappiness.size() / 4;
+                double sum = 0;
+                int count = 0;
+                for(int j = i; j < mListMaxHappiness.size(); j++){
+                    sum += mListMaxHappiness.get(j);
+                    count++;
+                }
+
+                double ave = sum / count;
+
+                Log.i("Happiness", "H = " + max);
+                Log.i("Happiness", "Ave = " + ave);
+            }
+        }.start();
     }
 
     /**
@@ -133,7 +179,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
         mCameraSource = new CameraSource.Builder(context, detector)
                 .setRequestedPreviewSize(640, 480)
-                .setFacing(CameraSource.CAMERA_FACING_FRONT)
+                .setFacing(CameraSource.CAMERA_FACING_BACK)
                 .setRequestedFps(30.0f)
                 .build();
     }
@@ -227,6 +273,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
      */
     private void startCameraSource() {
 
+
         // check that the device has play services available.
         int code = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(
                 getApplicationContext());
@@ -245,11 +292,15 @@ public final class FaceTrackerActivity extends AppCompatActivity {
                 mCameraSource = null;
             }
         }
+
+
     }
 
     //==============================================================================================
     // Graphic Face Tracker
     //==============================================================================================
+
+    List<FaceGraphic> mListFaceGraphic = new ArrayList<>();
 
     /**
      * Factory for creating a face tracker to be associated with a new face.  The multiprocessor
@@ -273,6 +324,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         GraphicFaceTracker(GraphicOverlay overlay) {
             mOverlay = overlay;
             mFaceGraphic = new FaceGraphic(overlay);
+            FaceTrackerActivity.this.mListFaceGraphic.add(mFaceGraphic);
         }
 
         /**
