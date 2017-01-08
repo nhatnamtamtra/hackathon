@@ -91,6 +91,16 @@ public class HomeController {
 		return ls;
 	}
 
+	@RequestMapping(value = "/get_invited_you", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody
+	List<Invitation> getListInvitedYou(@RequestParam(value = "id") int id) {
+		logger.info("Getting list of invitation");
+		List<Invitation> ls = new ArrayList<Invitation>();
+		ls = (List<Invitation>) invitationRepository.findInvitedYouById(id);
+
+		return ls;
+	}
+
     //Send list guest to host
 	@RequestMapping(value = "/get_guest", method = RequestMethod.GET)
 	public @ResponseBody
