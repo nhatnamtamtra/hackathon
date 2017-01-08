@@ -119,14 +119,11 @@ public class HomeController {
 	@RequestMapping(value = "/invite_guest", method = RequestMethod.POST)
 	public @ResponseBody
 	List<Guest_List> invite_guest(@RequestParam(value = "invitation") int id,
-								  @RequestParam(value = "guest[]") int guest[]
+								  @RequestParam(value = "guest") int guest
 	) {
 		//System.out.println(invitation);
-		for (int i = 0; i<guest.length; i++)
-		{
-			Guest_List gl= new Guest_List(new GuestListPK(id, guest[i]), "0");
-			guest_listRepository.save(gl);
-		}
+		Guest_List gl= new Guest_List(new GuestListPK(id, guest), "0");
+		guest_listRepository.save(gl);
 
 		return null;
 	}
