@@ -71,6 +71,15 @@ public class HomeController {
 		return ls;
 	}
 
+	@RequestMapping(value = "/get_user", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody
+	User getUser(@RequestParam(value = "id") Integer id) {
+		logger.info("Getting list of friends");
+		User ls = new User();
+		//System.out.println(id);
+		return (User) userRepository.findById(id);
+	}
+
 	@RequestMapping(value = "/get_location", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody
 	List<Location> getListLocation(@RequestParam(value = "id") int id) {
@@ -80,6 +89,7 @@ public class HomeController {
 
 		return ls;
 	}
+
 	//Invitation List User_id created
 	@RequestMapping(value = "/get_invitation", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody
