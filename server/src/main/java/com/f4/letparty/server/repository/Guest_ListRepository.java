@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Dang on 1/7/2017.
  */
 public interface Guest_ListRepository extends JpaRepository <Guest_List, GuestListPK>{
-    @Query("select u from Guest_List u where u.id.guest_id = :id")
+    @Query("select u from User u,Guest_List g where g.id.invitation_id = :id AND g.id.guest_id = u.user_id")
     List<Guest_List> findById(@Param("id") int id);
 
     @Query("select u from Guest_List u where u.id.invitation_id = :id AND u.isAccepted = \'1\'")

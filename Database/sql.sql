@@ -68,7 +68,7 @@ CREATE TABLE `guest_list` (
 
 LOCK TABLES `guest_list` WRITE;
 /*!40000 ALTER TABLE `guest_list` DISABLE KEYS */;
-INSERT INTO `guest_list` VALUES (1,2,'1'),(1,4,'0');
+INSERT INTO `guest_list` VALUES (1,2,'1'),(1,4,'1'),(2,1,'0');
 /*!40000 ALTER TABLE `guest_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +89,7 @@ CREATE TABLE `invitation` (
   KEY `fk_invitation_location_id_idx` (`Location_ID`),
   CONSTRAINT `fk_invitation_host_id` FOREIGN KEY (`Host_ID`) REFERENCES `user` (`User_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_invitation_location_id` FOREIGN KEY (`Location_ID`) REFERENCES `location` (`Location_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `invitation` (
 
 LOCK TABLES `invitation` WRITE;
 /*!40000 ALTER TABLE `invitation` DISABLE KEYS */;
-INSERT INTO `invitation` VALUES (1,1,1,'2017-01-08 08:00:00');
+INSERT INTO `invitation` VALUES (1,1,1,'2017-01-08 08:00:00'),(2,2,1,'2017-01-08 08:00:00'),(3,1,1,'2017-01-08 08:00:00'),(4,4,2,'2017-01-08 08:00:00');
 /*!40000 ALTER TABLE `invitation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-07 13:26:16
+-- Dump completed on 2017-01-08 12:53:26
