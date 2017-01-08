@@ -1,12 +1,9 @@
-package com.f4.letparty.activity;
+package com.f4.letparty;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.f4.letparty.adapter.PagerAdapter;
-import com.f4.letparty.R;
 
 public class PickLocation extends AppCompatActivity {
     TabLayout location_tablayout;

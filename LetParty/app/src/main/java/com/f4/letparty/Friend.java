@@ -1,4 +1,4 @@
-package com.f4.letparty.model;
+package com.f4.letparty;
 
 /**
  * Created by OKATA on 1/7/2017.

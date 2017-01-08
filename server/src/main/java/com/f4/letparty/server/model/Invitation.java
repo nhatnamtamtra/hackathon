@@ -1,32 +1,16 @@
 package com.f4.letparty.server.model;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import org.springframework.boot.orm.jpa.EntityScan;
 
 /**
  * Created by Dang on 1/7/2017.
  */
-@Entity
+@EntityScan
 public class Invitation {
-    @Id
-    @Column(name="Invitation_ID")
     private int invitation_id;
-    @Column(name="Host_ID")
     private int host_id;
-    @Column(name="Location")
     private int location_id;
-    @Column(name="Time")
     private String time;   //Format: "YYYY-MM-DD HH-MM-SS"
-
-    public Invitation(int invitation_id, int host_id, int location_id, String time) {
-        this.invitation_id = invitation_id;
-        this.host_id = host_id;
-        this.location_id = location_id;
-        this.time = time;
-    }
-
-    public Invitation() {
-    }
 
     public int getInvitation_id() {
         return invitation_id;

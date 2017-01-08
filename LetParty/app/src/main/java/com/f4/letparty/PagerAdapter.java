@@ -1,11 +1,9 @@
-package com.f4.letparty.adapter;
+package com.f4.letparty;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
-import com.f4.letparty.LocationContent;
 
 /**
  * Created by nhatn on 1/7/2017.
