@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.f4.letparty.activity.SignUpActivity">
+    tools:context="com.f4.letparty.SignUpActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -21,17 +21,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:orientation="vertical"
-        android:layout_gravity="center"
         android:padding="10dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/images"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,16 +34,12 @@
             android:background="#ffffff"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_user"
-                android:layout_gravity="start"/>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end">
+                android:gravity="center_vertical">
 
                 <EditText
                     android:id="@+id/username"
@@ -71,15 +61,11 @@
             android:layout_marginTop="10dp"
             android:background="#ffffff"
             android:orientation="horizontal">
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_pwd"
-                android:layout_gravity="start"/>
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end">
+                android:gravity="center_vertical">
 
                 <EditText
                     android:id="@+id/password"
@@ -101,11 +87,6 @@
             android:layout_marginTop="10dp"
             android:background="#ffffff"
             android:orientation="horizontal">
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_confirm_pwd"
-                android:layout_gravity="start"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -129,6 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_margin="20dp"
+            android:background="#ffffff"
             android:onClick="attempSignUp"
             android:text="Sign Up"
             android:textAllCaps="true" />

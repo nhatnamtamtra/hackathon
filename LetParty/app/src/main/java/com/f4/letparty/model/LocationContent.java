@@ -1,4 +1,4 @@
-package com.f4.letparty;
+package com.f4.letparty.model;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,13 +9,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.f4.letparty.activity.FriendListActivity;
+import com.f4.letparty.R;
 
-
+import com.f4.letparty.activity.*;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LocationContent.OnFragmentInteractionListener} interface
+ * {@link LocationContent} interface
  * to handle interaction events.
  * Use the {@link LocationContent#newInstance} factory method to
  * create an instance of this fragment.

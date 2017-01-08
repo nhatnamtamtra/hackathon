@@ -2,93 +2,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.f4.letparty.LocationContent">
+    tools:context="com.f4.letparty.model.LocationContent">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:padding="10dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/location_content_image"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_gravity="center_horizontal"
-
-            android:src="@drawable/test_foody_image"/>
+            android:src="@mipmap/ic_launcher"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:padding="10dp">
             <TextView
 
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
                 android:textSize="20sp"
-                android:textColor="@color/colorAccent"
                 />
             <TextView
                 android:id="@+id/location_content_name"
-                android:layout_width="0dp"
-                android:layout_weight="3"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-
+                android:paddingStart="10dp"
                 android:text="Test name"
                 android:textSize="20sp"
-                android:textColor="@color/colorPrimary"
                 />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:padding="10dp">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:id="@+id/location_content_address"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Address"
                 android:textSize="20dp"
-                android:textColor="@color/colorAccent"
                 />
             <TextView
-                android:id="@+id/location_content_address"
-                android:layout_width="0dp"
-                android:layout_weight="3"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Test Address"
-                android:textSize="20sp"
-                android:textColor="@color/colorPrimary"
-                />
+                android:textSize="20sp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:padding="10dp">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Views: "
                 android:textSize="20sp"
-                android:textColor="@color/colorAccent"
                 />
             <TextView
                 android:id="@+id/location_content_views"
                 android:layout_width="0dp"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:paddingStart="10dp"
                 android:text="100"
-                android:textColor="@color/colorPrimary"
                 android:textSize="20sp"/>
         </LinearLayout>
 
