@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.f4.letparty.LoginActivity">
+    tools:context="com.f4.letparty.activity.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -25,7 +25,7 @@
         android:layout_height="0dp"
         android:layout_margin="50dp"
         android:layout_weight="1"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/images" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +41,11 @@
             android:layout_marginRight="20dp"
             android:background="#ffffff"
             android:orientation="horizontal">
-
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_user"
+                android:layout_gravity="center_vertical"/>
 
 
             <android.support.design.widget.TextInputLayout
@@ -50,7 +54,7 @@
                 android:gravity="center_vertical">
 
                 <EditText
-                    android:id="@+id/username"
+                    android:id="@+id/login_username"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:background="#ffffff"
@@ -69,14 +73,17 @@
             android:layout_marginTop="10dp"
             android:background="#ffffff"
             android:orientation="horizontal">
-
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_pwd"/>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/login_password"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:background="#ffffff"

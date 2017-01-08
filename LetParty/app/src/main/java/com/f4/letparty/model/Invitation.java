@@ -16,4 +16,20 @@ public class Invitation {
         this.location = location;
         this.a = a;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getHost() {
+        return host;
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
+    public int getA() {
+        return a;
+    }
 }
