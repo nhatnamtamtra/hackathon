@@ -1,5 +1,6 @@
 package com.f4.letparty.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -19,6 +20,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        // TODO: Open Login
+        Intent login = new Intent(this, LoginActivity.class);
+        startActivity(login);
+
+
         list_invitation_accepted =(ListView) findViewById(R.id.invitation_accepted_list);
         ArrayList<Invitation > arrayListAccepted = new ArrayList<Invitation>();
         // TODO: get list Location
@@ -31,6 +37,17 @@ public class HomeActivity extends AppCompatActivity {
                 arrayListAccepted
         );
         list_invitation_accepted.setAdapter(adapter);
+
+        list_invitation_new = (ListView) findViewById(R.id.invitation_new_list);
+        ArrayList<Invitation> arrayListNew = new ArrayList<Invitation>();
+        arrayListNew.add(new Invitation(4,3,2,1));
+
+        InvitationAdapter newAdapter = new InvitationAdapter(
+                this,
+                R.layout.invitation_item,
+                arrayListNew
+        );
+        list_invitation_new.setAdapter(newAdapter);
     }
 
 }

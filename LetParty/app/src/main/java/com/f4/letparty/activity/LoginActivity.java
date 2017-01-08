@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.f4.letparty.R;
 
@@ -15,6 +18,8 @@ public class LoginActivity extends AppCompatActivity{
     /**
      * Id to identity READ_CONTACTS permission request.
      */
+    EditText user_tv;
+    EditText pass_tv;
     private static final int REQUEST_READ_CONTACTS = 0;
 
     /**
@@ -34,11 +39,20 @@ public class LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
+        user_tv = (EditText) findViewById(R.id.login_username);
+        pass_tv = (EditText) findViewById(R.id.login_password);
 
     }
 
     public void attempLogin(View v){
         // TODO: Login function
+        Toast.makeText(this, user_tv.getText(), Toast.LENGTH_SHORT).show();
+        if (user_tv.getText().equals("smile") && pass_tv.getText().equals("smile")){
+            finish();
+        }
+        else{
+            Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
