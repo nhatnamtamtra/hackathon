@@ -8,31 +8,64 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.f4.letparty.HomeActivity">
+    tools:context="com.f4.letparty.activity.HomeActivity">
 
-    <LinearLayout
-        android:id="@+id/location_view"
-        android:orientation="vertical"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true">
-
-        <TextView
+        android:layout_height="match_parent">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Locations"
-            android:textSize="20dp"
-            android:padding="10dp"
-            />
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/invitation_new"
 
-        <ListView
-            android:id="@+id/list_location"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Invitation - new"
+                    android:textSize="20dp"
+                    android:padding="10dp"
+                    />
 
+                <ListView
+                    android:id="@+id/invitation_new_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:minHeight="150dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/invitation_accepted"
+                android:layout_below="@id/invitation_new"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Invitation - accepted"
+                    android:textSize="20dp"
+                    android:padding="10dp"
+                    />
+
+                <ListView
+                    android:id="@+id/invitation_accepted_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:minHeight="150dp"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </android.support.design.widget.CoordinatorLayout>
 </RelativeLayout>
