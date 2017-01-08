@@ -1,13 +1,18 @@
 package com.f4.letparty.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.f4.letparty.activity.FriendListActivity;
 import com.f4.letparty.model.Friend;
 import com.f4.letparty.R;
 
@@ -19,12 +24,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by OKATA on 1/7/2017.
  */
 public class FriendListAdapter extends ArrayAdapter<Friend> {
+    private static Context mContext;
     public FriendListAdapter(Context context, int resource) {
         super(context, resource);
     }
 
     public FriendListAdapter(Context context, int resource, List<Friend> objects) {
         super(context, resource, objects);
+        mContext = context;
     }
 
     @NonNull
@@ -39,9 +46,11 @@ public class FriendListAdapter extends ArrayAdapter<Friend> {
         }
         Friend friend = getItem(position);
         if (friend != null){
-            CircleImageView imgDirect = (CircleImageView) v.findViewById(R.id.imgProfilePicture);
+            ImageView imgDirect = (ImageView) v.findViewById(R.id.imgProfilePicture);
             TextView username = (TextView) v.findViewById(R.id.username);
-            imgDirect.setImageResource(R.drawable.ic_launcher);
+            int id = mContext.getResources().getIdentifier(friend.getImgDirect(), "drawable", mContext.getPackageName());
+            Drawable drawable = mContext.getResources().getDrawable(id);
+            imgDirect.setBackground(drawable);
             username.setText(friend.getName());
             // TODO: set image for location
         }
