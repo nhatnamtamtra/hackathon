@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class Location {
     @Id
     @Column (name="Location_ID")
-    private int location_id;
+    private Integer location_id;
     @Column (name="Name")
     private String name;
     @Column (name="X")
@@ -21,7 +21,7 @@ public class Location {
     @Column (name="Address")
     private String address;
 
-    public Location(int location_id, String name, float x, float y, String address) {
+    public Location(Integer location_id, String name, float x, float y, String address) {
         this.location_id = location_id;
         this.name = name;
         X = x;

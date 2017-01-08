@@ -14,20 +14,20 @@ public class FriendListPK implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Column(name="Host_ID", insertable=false, updatable=false)
-    private int host_id;
+    private Integer host_id;
 
-    @Column(name="Guest_ID", insertable=false, updatable=false)
-    private int guest_id;
+    @Column(name="Friend_ID", insertable=false, updatable=false)
+    private Integer friend_id;
 
-    public FriendListPK(int host_id, int guest_id) {
+    public FriendListPK(Integer host_id, Integer friend_id) {
         this.host_id = host_id;
-        this.guest_id = guest_id;
+        this.friend_id = friend_id;
     }
 
     public FriendListPK() {
     }
 
-    public int getHost_id() {
+    public Integer getHost_id() {
         return host_id;
     }
 
@@ -35,12 +35,12 @@ public class FriendListPK implements Serializable {
         this.host_id = host_id;
     }
 
-    public int getGuest_id() {
-        return guest_id;
+    public Integer getFriend_id() {
+        return friend_id;
     }
 
-    public void setGuest_id(int guest_id) {
-        this.guest_id = guest_id;
+    public void setFriend_id(int guest_id) {
+        this.friend_id = guest_id;
     }
 
     public boolean equals(Object other) {
@@ -53,14 +53,14 @@ public class FriendListPK implements Serializable {
         FriendListPK castOther = (FriendListPK) other;
         return
                 (this.host_id == castOther.host_id)
-                        && (this.guest_id == castOther.guest_id);
+                        && (this.friend_id == castOther.friend_id);
     }
 
     public int hashCode() {
         final int prime = 31;
         int hash = 17;
         hash = hash * prime + this.host_id;
-        hash = hash * prime + this.guest_id;
+        hash = hash * prime + this.friend_id;
 
         return hash;
     }

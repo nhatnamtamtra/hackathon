@@ -1,4 +1,6 @@
 package com.f4.letparty.server.model;
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,18 +9,21 @@ import javax.persistence.Id;
  * Created by Dang on 1/7/2017.
  */
 @Entity
+
 public class Invitation {
     @Id
     @Column(name="Invitation_ID")
-    private int invitation_id;
+    private Integer invitation_id;
     @Column(name="Host_ID")
-    private int host_id;
-    @Column(name="Location")
-    private int location_id;
+    private Integer host_id;
+    @Column(name="Location_ID")
+    @Nullable
+    private Integer location_id;
+    @Nullable
     @Column(name="Time")
     private String time;   //Format: "YYYY-MM-DD HH-MM-SS"
 
-    public Invitation(int invitation_id, int host_id, int location_id, String time) {
+    public Invitation(Integer invitation_id, Integer host_id, Integer location_id, String time) {
         this.invitation_id = invitation_id;
         this.host_id = host_id;
         this.location_id = location_id;

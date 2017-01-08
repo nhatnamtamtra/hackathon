@@ -15,31 +15,40 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name="guest_list")
-//@NamedQuery(name="Friend_List.findAll", query="SELECT g FROM friend_list g")
+//@Table(name="friend_list")
+//@NamedQuery(name="Friend_List.findAll", query="SELECT g FROM Friend_List g")
 public class Friend_List implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @EmbeddedId
     private FriendListPK id;
+    //private Integer host_id;
 
-    //bi-directional many-to-one association to User
-    //@ManyToOne
-   // @JoinColumn(name="Host_ID")
-   // private User host;
+    //private Integer friend_id;
 
-    //bi-directional many-to-one association to Invitation
-   // @ManyToOne
-  //  @JoinColumn(name="Friend_ID")
-   // private User friend;
+    /*public Integer getHost_id() {
+        return host_id;
+    }
+
+    public void setHost_id(Integer host_id) {
+        this.host_id = host_id;
+    }
+
+    public Integer getFriend_id() {
+        return friend_id;
+    }
+
+    public void setFriend_id(Integer friend_id) {
+        this.friend_id = friend_id;
+    }*/
 
     public Friend_List() {
     }
 
     public Friend_List(FriendListPK id ) {
         this.id = id;
-       // this.host = host;
-     //   this.friend = friend;
+        //this.host_id = id.getHost_id();
+        //this.friend_id = id.getFriend_id();
     }
 
     public FriendListPK getId() {

@@ -20,10 +20,10 @@ import com.f4.letparty.server.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +49,9 @@ public class HomeController {
 	@Autowired
 	private Friend_ListRepository friend_listRepository;
 
+	@Autowired
+	EntityManager em;
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -57,54 +60,96 @@ public class HomeController {
 		logger.info("Spring Android Basic Auth");
 		return "home";
 	}*/
-
+	//Format: /get_list_friend?id=...
 	@RequestMapping(value = "/get_list_friend", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody
-	List<User> getListFriend(@RequestParam(value = "id") int id) {
+	List<Friend_List> getListFriend(@RequestParam(value = "id") Integer id) {
 		logger.info("Getting list of friends");
-		List<User> ls = new ArrayList<User>();
-		System.out.println(id);
-		//ls = friend_listRepository.f;
+		List<Friend_List> ls = new ArrayList<Friend_List>();
+		//System.out.println(id);
+		ls = (List<Friend_List>)friend_listRepository.findById(id);
 		return ls;
 	}
 
 	@RequestMapping(value = "/get_location", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody
-	List<Location> getListLocation() {
+	List<Location> getListLocation(@RequestParam(value = "id") int id) {
 		logger.info("Getting list of locations");
 		List<Location> ls = new ArrayList<Location>();
-		//ls.add(new Location());
-		//ls.add(new Location());
+		ls = (List<Location>) locationRepository.findById(id);
 
 		return ls;
 	}
-
+	//Invitation List User_id created
 	@RequestMapping(value = "/get_invitation", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody
-	List<Invitation> getListInvitation() {
+	List<Invitation> getListInvitation(@RequestParam(value = "id") int id) {
 		logger.info("Getting list of invitation");
 		List<Invitation> ls = new ArrayList<Invitation>();
-		//ls.add(new Invitation());
-		//ls.add(new Invitation());
+		ls = (List<Invitation>) invitationRepository.findById(id);
 
 		return ls;
 	}
 
-
-
-	@RequestMapping(value = "/invite", method = RequestMethod.POST)
+    //Send list guest to host
+	@RequestMapping(value = "/get_guest", method = RequestMethod.GET)
 	public @ResponseBody
-	String invite(@RequestBody Invitation invitation) {
-		System.out.println(invitation);
+	List<Guest_List> getListGuest(@RequestParam(value = "id") int id) {
+		//System.out.println(invitation);
+		List<Guest_List> ls = new ArrayList<Guest_List>();
+		ls = (List<Guest_List>) guest_listRepository.findById(id);
+
+		return ls;
+	}
+
+	//Send list guest to host
+	@RequestMapping(value = "/invitation", method = RequestMethod.POST)
+	public @ResponseBody
+	List<Guest_List> invite(@RequestParam(value = "host_id") int id,
+							@RequestParam(value = "location_id") int location_id,
+							@RequestParam(value = "time") String time
+							) {
+		//System.out.println(invitation);
+		Invitation invatation= new Invitation(0, id, location_id, "fgd");
+		invitationRepository.save(invatation);
 
 		return null;
 	}
 
+	@RequestMapping(value = "/invite_guest", method = RequestMethod.POST)
+	public @ResponseBody
+	List<Guest_List> invite_guest(@RequestParam(value = "invitation") int id,
+								  @RequestParam(value = "guest[]") int guest[]
+	) {
+		//System.out.println(invitation);
+		for (int i = 0; i<guest.length; i++)
+		{
+			Guest_List gl= new Guest_List(new GuestListPK(id, guest[i]), "0");
+			guest_listRepository.save(gl);
+		}
+
+		return null;
+	}
+
+	//Guest accept invitation
+	@RequestMapping(value = "/get_accepted", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Guest_List> getGuestAccepted(@RequestParam(value = "id") int id) {
+		//System.out.println(invitation);
+		List<Guest_List> ls = new ArrayList<Guest_List>();
+		ls = (List<Guest_List>) guest_listRepository.findAcceptedById(id);
+
+		return ls;
+	}
+
 	@RequestMapping(value = "/is_accepted", method = RequestMethod.POST)
 	public @ResponseBody
-	String invite(@RequestBody Guest_List glist) {
-		System.out.println(glist);
-
+	String accepted(@RequestParam(value = "invitation_id") Integer invitation_id,
+					@RequestParam(value = "guest_id") Integer guest_id,
+					@RequestParam(value = "is_accepted") String is_accepted
+					)  {
+        Guest_List gl = new Guest_List(new GuestListPK(invitation_id, guest_id), is_accepted);
+		guest_listRepository.save(gl);
 		return null;
 	}
 
