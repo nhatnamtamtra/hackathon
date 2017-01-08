@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -75,7 +76,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
         }
 
         // Begin timer
-        new CountDownTimer(10000, 1000){
+        new CountDownTimer(3000, 1000){
             @Override
             public void onTick(long l) {
                 Log.i("Msg","Tick");
@@ -114,6 +115,10 @@ public final class FaceTrackerActivity extends AppCompatActivity {
                 Log.i("Happiness", "H = " + max);
                 Log.i("Happiness", "Ave = " + ave);
                 //TODO : return
+                Intent data = new Intent();
+                data.putExtra("happiness", ave);
+                setResult(1,data);
+                finish();
             }
         }.start();
     }
@@ -180,7 +185,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
         mCameraSource = new CameraSource.Builder(context, detector)
                 .setRequestedPreviewSize(640, 480)
-                .setFacing(CameraSource.CAMERA_FACING_BACK)
+                .setFacing(CameraSource.CAMERA_FACING_FRONT)
                 .setRequestedFps(30.0f)
                 .build();
     }

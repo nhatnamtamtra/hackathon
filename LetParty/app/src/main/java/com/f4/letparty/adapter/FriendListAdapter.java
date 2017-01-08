@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.f4.letparty.model.Friend;
@@ -39,7 +40,7 @@ public class FriendListAdapter extends ArrayAdapter<Friend> {
         }
         Friend friend = getItem(position);
         if (friend != null){
-            CircleImageView imgDirect = (CircleImageView) v.findViewById(R.id.imgProfilePicture);
+            ImageView imgDirect = (ImageView) v.findViewById(R.id.imgProfilePicture);
             TextView username = (TextView) v.findViewById(R.id.username);
             imgDirect.setImageResource(R.drawable.ic_launcher);
             username.setText(friend.getName());

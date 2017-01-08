@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.f4.letparty.adapter.InvitationAdapter;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
     ListView list_invitation_accepted;
     ListView list_invitation_new;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +44,8 @@ public class HomeActivity extends AppCompatActivity {
 
         list_invitation_new = (ListView) findViewById(R.id.invitation_new_list);
         ArrayList<Invitation> arrayListNew = new ArrayList<Invitation>();
-        arrayListNew.add(new Invitation(4,3,2,1));
+        arrayListNew.add(new Invitation(R.drawable.coffeehouse, 3,2,1));
+        arrayListNew.add(new Invitation(R.drawable.coffeehouse, 4, 3, 2));
 
         InvitationAdapter newAdapter = new InvitationAdapter(
                 this,
@@ -58,6 +61,12 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(invitation);
             }
         });
+
+    }
+
+    public void invite(View v){
+        Intent pickLocation = new Intent(this, PickLocation.class);
+        startActivity(pickLocation);
     }
 
 }

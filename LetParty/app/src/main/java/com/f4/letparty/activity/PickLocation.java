@@ -24,4 +24,6 @@ public class PickLocation extends AppCompatActivity {
         location_viewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(location_tablayout));
 
     }
+
+
 }

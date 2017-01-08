@@ -65,7 +65,14 @@
             </LinearLayout>
 
         </RelativeLayout>
+        <ImageButton
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_add_float"
+            android:layout_gravity="end|bottom"
+            android:onClick="invite"
+            />
 
     </android.support.design.widget.CoordinatorLayout>
 </RelativeLayout>

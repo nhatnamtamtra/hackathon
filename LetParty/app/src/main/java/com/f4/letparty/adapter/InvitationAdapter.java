@@ -1,12 +1,15 @@
 package com.f4.letparty.adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.f4.letparty.R;
 import com.f4.letparty.model.*;
@@ -40,9 +43,18 @@ public class InvitationAdapter extends ArrayAdapter<Invitation>{
             TextView name = (TextView) v.findViewById(R.id.invitation_host);
             TextView address = (TextView) v.findViewById(R.id.invitation_location);
             TextView time = (TextView) v.findViewById(R.id.invitation_time);
-            //name.setText(invitation.getHost());
-            //address.setText(invitation.getLocation());
-            //time.setText("Time: Sat 1/10/2017");
+            //name.setText(String.valueOf(invitation.getHost()));
+            name.setText("Ba Phuc");
+            address.setText("Coffee House");
+            //address.setText(String.valueOf(invitation.getLocation()));
+            ImageView img = (ImageView) v.findViewById(R.id.invitation_img);
+            try {
+                img.setImageResource(R.drawable.coffeehouse);
+            }
+            catch (Exception e){
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            time.setText("Time: Sat 1/10/2017");
 
             // TODO: set image and time for location
         }
