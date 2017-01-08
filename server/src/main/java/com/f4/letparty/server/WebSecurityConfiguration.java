@@ -16,11 +16,14 @@
 
 package com.f4.letparty.server;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+import javax.sql.DataSource;
 
 /**
  * @author Roy Clarkson
@@ -29,13 +32,24 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	DataSource dataSource;
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// @formatter:off
+
 		auth.inMemoryAuthentication()
 			.withUser("roy")
 				.password("spring")
 				.roles("USER");
+		/*
+		auth.jdbcAuthentication().dataSource(dataSource)
+				.usersByUsernameQuery(
+						"select User_ID,Password, enabled from users where username=?")
+				.authoritiesByUsernameQuery(
+						"select username, role from user_roles where username=?");
+						*/
 		// @formatter:on
 	}
 
@@ -50,36 +64,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.httpBasic();
 		// @formatter:on
 	}
-/*
-	@Bean
-	public javax.sql.DataSource dataSource() {
-		DriverManagerDataSource
-				dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/[F4].InvitationForLunch");
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
-
-		return dataSource;
-	}
-
-	@Bean
-	public EntityManagerFactory entityManagerFactory() {
-		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		vendorAdapter.setGenerateDdl(true);
-		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-		factory.setJpaVendorAdapter(vendorAdapter);
-		factory.setPackagesToScan("com.f4.letparty.server.model");
-		factory.setDataSource(dataSource());
-		factory.afterPropertiesSet();
-		return factory.getObject();
-	}
-
-	@Bean
-	public PlatformTransactionManager transactionManager() {
-		JpaTransactionManager txManager = new JpaTransactionManager();
-		txManager.setEntityManagerFactory(entityManagerFactory());
-		return txManager;
-	}
-*/
 }
