@@ -1,25 +1,48 @@
 package com.f4.letparty.server.model;
 
+import java.io.Serializable;
+import javax.persistence.*;
+
+
 /**
- * Created by Dang on 1/7/2017.
+ * The persistent class for the guest_list database table.
+ *
  */
-public class Guest_List {
-    private int invitation_id;
-    private int guest_id;
+@Entity
+//@Table(name="guest_list")
+//@NamedQuery(name="GuestList.findAll", query="SELECT g FROM GuestList g")
+public class Guest_List implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    public int getInvitation_id() {
-        return invitation_id;
+    @EmbeddedId
+    private GuestListPK id;
+
+    @Column(name="is_accepted")
+    private String isAccepted;
+
+    public Guest_List(GuestListPK id, String isAccepted) {
+        this.id = id;
+        this.isAccepted = isAccepted;
     }
 
-    public void setInvitation_id(int invitation_id) {
-        this.invitation_id = invitation_id;
+    public Guest_List() {
     }
 
-    public int getGuest_id() {
-        return guest_id;
+    public GuestListPK getId() {
+        return this.id;
     }
 
-    public void setGuest_id(int guest_id) {
-        this.guest_id = guest_id;
+    public void setId(GuestListPK id) {
+        this.id = id;
     }
+
+    public String getIsAccepted() {
+        return this.isAccepted;
+    }
+
+    public void setIsAccepted(String isAccepted) {
+        this.isAccepted = isAccepted;
+    }
+
+
 }
