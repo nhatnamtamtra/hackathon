@@ -3,6 +3,8 @@ package com.f4.letparty.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.f4.letparty.adapter.InvitationAdapter;
@@ -48,6 +50,14 @@ public class HomeActivity extends AppCompatActivity {
                 arrayListNew
         );
         list_invitation_new.setAdapter(newAdapter);
+
+        list_invitation_new.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent invitation = new Intent(getApplicationContext() , InvitationActivity.class);
+                startActivity(invitation);
+            }
+        });
     }
 
 }
