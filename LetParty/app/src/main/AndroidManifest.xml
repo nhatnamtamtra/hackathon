@@ -40,7 +40,8 @@
 
         </activity>
 
-        <activity android:name=".activity.FriendListActivity"></activity><activity android:name=".AbstractAsyncActivity"></activity>
+        <activity android:name=".activity.FriendListActivity"></activity>
+
     </application>
 
 </manifest>

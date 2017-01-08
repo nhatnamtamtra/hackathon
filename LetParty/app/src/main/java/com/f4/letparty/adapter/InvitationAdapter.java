@@ -40,8 +40,9 @@ public class InvitationAdapter extends ArrayAdapter<Invitation>{
             TextView name = (TextView) v.findViewById(R.id.invitation_host);
             TextView address = (TextView) v.findViewById(R.id.invitation_location);
             TextView time = (TextView) v.findViewById(R.id.invitation_time);
-            name.setText(invitation.getHost());
-            address.setText(invitation.getLocation());
+            //name.setText(invitation.getHost());
+            //address.setText(invitation.getLocation());
+            //time.setText("Time: Sat 1/10/2017");
 
             // TODO: set image and time for location
         }
