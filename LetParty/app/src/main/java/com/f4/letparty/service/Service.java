@@ -1,4 +1,4 @@
-package com.f4.letparty.com.f4.letparty.service;
+package com.f4.letparty.service;
 
 import android.util.Log;
 
@@ -17,21 +17,7 @@ public class Service {
         InputStream inputStream = null;
         String result = "";
         try {
-
-            // create HttpClient
-            //HttpClient httpclient = new DefaultHttpClient();
-
-            // make GET request to the given URL
-            //HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
-
-            // receive response as inputStream
-            //inputStream = httpResponse.getEntity().getContent();
-
-            // convert inputstream to string
-            //if(inputStream != null)
-             //   result = convertInputStreamToString(inputStream);
-            //else
-            //    result = "Did not work!";
+            int a = 1;
 
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());
@@ -51,5 +37,7 @@ public class Service {
         return result;
 
     }
+
+
 
 }

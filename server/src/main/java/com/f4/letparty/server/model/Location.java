@@ -1,13 +1,44 @@
 package com.f4.letparty.server.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by Dang on 1/7/2017.
  */
+@Entity
 public class Location {
+    @Id
+    @Column (name="Location_ID")
     private int location_id;
+    @Column (name="Name")
     private String name;
+    @Column (name="X")
     private float X;
+    @Column (name="Y")
     private float Y;
+    @Column (name="Address")
+    private String address;
+
+    public Location(int location_id, String name, float x, float y, String address) {
+        this.location_id = location_id;
+        this.name = name;
+        X = x;
+        Y = y;
+        this.address = address;
+    }
+
+    public Location() {
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public int getLocation_id() {
         return location_id;

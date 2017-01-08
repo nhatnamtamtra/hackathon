@@ -1,8 +1,12 @@
-package com.f4.letparty;
+package com.f4.letparty.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+
+import com.f4.letparty.adapter.ListLocationAdapter;
+import com.f4.letparty.model.Location;
+import com.f4.letparty.R;
 
 import java.util.ArrayList;
 

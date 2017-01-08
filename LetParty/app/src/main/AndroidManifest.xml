@@ -15,27 +15,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
-
-        </activity>
+        <activity android:name=".activity.HomeActivity"></activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".activity.SignUpActivity"
             android:label="@string/title_activity_sign_up" />
-        <activity android:name=".InvitationActivity" />
-        <activity android:name=".PickLocation">
+        <activity android:name=".activity.InvitationActivity" />
+        <activity android:name=".activity.PickLocation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FriendListActivity" >
-        </activity>
+        <activity android:name=".activity.FriendListActivity"></activity>
+        <activity android:name=".AbstractAsyncActivity"></activity>
     </application>
-
 
 </manifest>
