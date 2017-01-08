@@ -1,4 +1,4 @@
-package com.f4.letparty.com.f4.letparty.service;
+package com.f4.letparty.service;
 
 import android.util.Log;
 

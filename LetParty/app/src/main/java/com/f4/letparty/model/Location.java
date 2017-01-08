@@ -1,4 +1,4 @@
-package com.f4.letparty;
+package com.f4.letparty.model;
 
 /**
  * Created by nhatn on 1/7/2017.
